@@ -13,6 +13,7 @@
     <meta name="twitter:description" content="FallSession_Clock">
     <link rel="stylesheet" href="./css/clock-fonts.css">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/info.css">
   </head>
   <body>
     <main id="clock" aria-label="FallSession_Clock">
@@ -21,6 +22,24 @@
       <span class="accessible-time" aria-hidden="true" lang="ko">오전후열한두세네다섯여일곱덟아홉시영이삼사육칠팔구십분초</span>
       <div id="letters" aria-hidden="true"></div>
     </main>
+    <button id="info-open" class="info-mark" type="button" aria-label="작품 정보" aria-haspopup="dialog">
+      <img src="./assets/info.png" alt="">
+    </button>
+    <dialog id="clock-info" aria-label="작품 정보">
+      <article class="info-page" id="info-scroll">
+        <div id="info-copy" aria-live="polite"></div>
+      </article>
+      <div class="info-dock">
+        <div id="info-languages" class="info-languages" role="group" aria-label="설명 언어" hidden></div>
+        <button id="info-language" type="button" aria-expanded="false" aria-controls="info-languages">한국어</button>
+        <button id="info-close" class="info-mark" type="button" aria-label="설명 닫기">
+          <svg viewBox="0 0 61 58" aria-hidden="true" focusable="false">
+            <path d="M 15 14 L 46 44 M 46 14 L 15 44" fill="none" stroke="currentColor" stroke-width="7"/>
+          </svg>
+        </button>
+      </div>
+    </dialog>
     <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/info.js"></script>
   </body>
 </html>

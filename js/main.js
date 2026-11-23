@@ -80,11 +80,12 @@ stage.addEventListener('pointermove', event => {
   if (!zoom) return;
   const x = (event.clientX - view.left - (view.width - WIDTH * zoom) / 2) / zoom;
   const y = (event.clientY - view.top - (view.height - HEIGHT * zoom) / 2) / zoom;
-  const insideSharedCircle = Math.hypot(x - WIDTH / 2, y - HEIGHT / 2) <= sharedRadius;
+  const distanceFromCenter = Math.hypot(x - WIDTH / 2, y - HEIGHT / 2);
+  const insideSharedCircle = distanceFromCenter <= sharedRadius;
   if (latched) {
     if (insideSharedCircle) enteredSharedCircle = true;
     // An outer clock can start the merge while the pointer is still outside.
-    else if (enteredSharedCircle || merged >= 0.98) clearPointer();
+    else if (distanceFromCenter > sharedRadius * 1.2 && (enteredSharedCircle || merged >= 0.98)) clearPointer();
     return;
   }
   if (merged > 0.02) return;
