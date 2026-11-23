@@ -60,10 +60,15 @@ function showLanguage(city, name, typing = false) {
   picker.lang = shown;
   prose.lang = shown;
   prose.dir = city.direction || 'ltr';
-  const paragraphs = copy[shown].map(line => {
-    const paragraph = document.createElement('p');
-    paragraph.textContent = line;
-    return paragraph;
+  const sentences = new Intl.Segmenter(shown, { granularity: 'sentence' });
+  const paragraphs = copy[shown].flatMap((line, section) => {
+    const parts = shown === 'ko' ? [line] : [...sentences.segment(line)].map(part => part.segment.trim());
+    return parts.map((text, index) => {
+      const paragraph = document.createElement('p');
+      paragraph.textContent = text;
+      if (section > 0 && index === 0) paragraph.className = 'info-section-start';
+      return paragraph;
+    });
   });
   prose.replaceChildren(...paragraphs);
   scroll.scrollTop = 0;
@@ -75,9 +80,29 @@ function showLanguage(city, name, typing = false) {
 
 function typeParagraphs(paragraphs) {
   const segmenter = new Intl.Segmenter(shown, { granularity: 'grapheme' });
+  const words = new Intl.Segmenter(shown, { granularity: 'word' });
+  let cursor = 230;
   const lines = paragraphs.map(paragraph => {
     const text = paragraph.textContent;
-    const ends = [0, ...Array.from(segmenter.segment(text), part => part.index + part.segment.length)];
+    const wordEnds = new Set();
+    for (const part of words.segment(text)) {
+      if (part.isWordLike) wordEnds.add(part.index + part.segment.length);
+    }
+    const ends = [0];
+    const at = [0];
+    for (const { index, segment } of segmenter.segment(text)) {
+      const end = index + segment.length;
+      ends.push(end);
+      at.push(cursor);
+      const cadence = 16 + (ends.length * 11 % 21);
+      const punctuation = /[.!?。！？।]$/u.test(segment);
+      const shortPause = /[,;،；，、]$/u.test(segment);
+      cursor += punctuation ? 250
+        : shortPause ? 115
+        : wordEnds.has(end) ? 75 + (ends.length * 13 % 55)
+        : cadence;
+    }
+    cursor += 110;
     const prefix = document.createElement('span');
     const suffix = document.createElement('span');
     suffix.className = 'info-untyped';
@@ -86,25 +111,25 @@ function typeParagraphs(paragraphs) {
     prefix.setAttribute('aria-hidden', 'true');
     suffix.setAttribute('aria-hidden', 'true');
     paragraph.replaceChildren(prefix, suffix);
-    return { paragraph, text, ends, prefix, suffix, count: -1 };
+    return { text, ends, at, prefix, suffix, count: 0 };
   });
-  const total = lines.reduce((sum, line) => sum + line.ends.length - 1, 0);
-  const duration = Math.min(3300, Math.max(1350, total * 4));
+  const rate = cursor / Math.min(7600, Math.max(3300, cursor));
   let start;
   function tick(now) {
     start ??= now;
-    let remaining = Math.min(total, Math.floor((now - start) / duration * total));
-    const complete = remaining === total;
+    const elapsed = (now - start) * rate;
+    let complete = true;
     let active = lines[0];
     for (const line of lines) {
-      const count = Math.min(remaining, line.ends.length - 1);
+      let count = line.count;
+      while (count + 1 < line.at.length && line.at[count + 1] <= elapsed) count++;
+      if (count + 1 < line.at.length) complete = false;
       if (count !== line.count) {
         line.prefix.textContent = line.text.slice(0, line.ends[count]);
         line.suffix.textContent = line.text.slice(line.ends[count]);
         line.count = count;
       }
       if (count > 0) active = line;
-      remaining -= count;
     }
     for (const line of lines) line.prefix.classList.toggle('info-caret', line === active);
     if (!complete) typeFrame = requestAnimationFrame(tick);
@@ -145,7 +170,10 @@ for (const [i, city] of CITIES.entries()) {
   choices.append(option);
 }
 
-button.addEventListener('click', () => dialog.showModal());
+button.addEventListener('click', () => {
+  dialog.showModal();
+  if (!reducedMotion.matches) typeParagraphs([...prose.children]);
+});
 close.addEventListener('click', () => dialog.close());
 picker.addEventListener('click', () => {
   setChoices(choices.hidden);
