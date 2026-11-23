@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="숫자 대신 각자의 언어로 시간을 쓰면 어떻게 다르게 보일까? 열여섯 수도의 시각을 각 언어로 표현한 세계시계.">
+    <title>문자로 보는 세계시계</title>
+    <link rel="stylesheet" href="./css/clock-fonts.css">
+    <link rel="stylesheet" href="./css/style.css">
+  </head>
+  <body>
+    <main id="clock" aria-label="16개 언어로 표현한 세계의 문자 시계">
+      <p id="seoul-time" class="accessible-time" lang="ko"></p>
+      <p id="washington-time" class="accessible-time" lang="en"></p>
+      <span class="accessible-time" aria-hidden="true" lang="ko">오전후열한두세네다섯여일곱덟아홉시영이삼사육칠팔구십분초</span>
+      <div id="letters" aria-hidden="true"></div>
+    </main>
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>

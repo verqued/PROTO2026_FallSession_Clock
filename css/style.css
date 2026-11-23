@@ -1,0 +1,35 @@
+/* Local font references only; no Adobe font binaries are distributed. */
+@font-face {
+  font-family: "Clock Ahnsangsoo";
+  src: local("AGahnsangsoo2012-M"), local("AGahnsangsoo2012 M");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Clock Helvetica";
+  src: local("Helvetica");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+:root { color-scheme: light; background: #fff; color: #000; }
+* { box-sizing: border-box; }
+html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; overscroll-behavior: none; }
+body { background: #fff; }
+#clock, #letters { position: absolute; inset: 0; overflow: hidden; }
+#letters {  user-select: none; -webkit-user-select: none; }
+.accessible-time {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.clock-canvas { width: 100%; height: 100%; display: block; overflow: hidden; }
+.clock-text { fill: #000; unicode-bidi: isolate; font-kerning: normal; cursor: default; user-select: none; -webkit-user-select: none; }
+.clock-hit { fill: transparent; pointer-events: all; }

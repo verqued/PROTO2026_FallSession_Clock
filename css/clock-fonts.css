@@ -1,0 +1,125 @@
+/* Yatra One: https://raw.githubusercontent.com/google/fonts/main/ofl/yatraone/OFL.txt */
+@font-face {
+  font-family: "Clock Yatra One";
+  src: url("../assets/fonts/hi-yatraone.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+/* Yuji Syuku: https://raw.githubusercontent.com/google/fonts/main/ofl/yujisyuku/OFL.txt */
+@font-face {
+  font-family: "Clock Yuji Syuku";
+  src: url("../assets/fonts/ja-yujisyuku.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+/* Ma Shan Zheng: https://raw.githubusercontent.com/google/fonts/main/ofl/mashanzheng/OFL.txt */
+@font-face {
+  font-family: "Clock Ma Shan Zheng";
+  src: url("../assets/fonts/zh-mashanzheng.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+/* Ruslan Display: https://raw.githubusercontent.com/google/fonts/main/ofl/ruslandisplay/OFL.txt */
+@font-face {
+  font-family: "Clock Ruslan Display";
+  src: url("../assets/fonts/ru-ruslandisplay.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+/* Aref Ruqaa: https://raw.githubusercontent.com/google/fonts/main/ofl/arefruqaa/OFL.txt */
+@font-face {
+  font-family: "Clock Aref Ruqaa";
+  src: url("../assets/fonts/ar-arefruqaa.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+/* Cormorant Garamond: https://raw.githubusercontent.com/google/fonts/main/ofl/cormorantgaramond/OFL.txt */
+@font-face {
+  font-family: "Clock Cormorant Garamond";
+  src: url("../assets/fonts/fr-cormorantgaramond.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+/* Almendra: https://raw.githubusercontent.com/google/fonts/main/ofl/almendra/OFL.txt */
+@font-face {
+  font-family: "Clock Almendra";
+  src: url("../assets/fonts/es-almendra.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+/* UnifrakturCook: https://raw.githubusercontent.com/google/fonts/main/ofl/unifrakturcook/OFL.txt */
+@font-face {
+  font-family: "Clock UnifrakturCook";
+  src: url("../assets/fonts/de-unifrakturcook.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+/* Italiana: https://raw.githubusercontent.com/google/fonts/main/ofl/italiana/OFL.txt */
+@font-face {
+  font-family: "Clock Italiana";
+  src: url("../assets/fonts/it-italiana.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+/* Lusitana: https://raw.githubusercontent.com/google/fonts/main/ofl/lusitana/OFL.txt */
+@font-face {
+  font-family: "Clock Lusitana";
+  src: url("../assets/fonts/pt-lusitana.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+/* Cinzel: https://raw.githubusercontent.com/google/fonts/main/ofl/cinzel/OFL.txt */
+@font-face {
+  font-family: "Clock Cinzel";
+  src: url("../assets/fonts/tr-cinzel.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+/* Charm: https://raw.githubusercontent.com/google/fonts/main/ofl/charm/OFL.txt */
+@font-face {
+  font-family: "Clock Charm";
+  src: url("../assets/fonts/th-charm.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+/* GFS Neohellenic: https://raw.githubusercontent.com/google/fonts/main/ofl/gfsneohellenic/OFL.txt */
+@font-face {
+  font-family: "Clock GFS Neohellenic";
+  src: url("../assets/fonts/el-gfsneohellenic.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+/* Bungee: https://raw.githubusercontent.com/google/fonts/main/ofl/bungee/OFL.txt */
+@font-face {
+  font-family: "Clock Bungee";
+  src: url("../assets/fonts/vi-bungee.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
